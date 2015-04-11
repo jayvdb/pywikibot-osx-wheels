@@ -14,9 +14,6 @@ basedirlist = $BUILD_PREFIX, /usr
 EOF
     CC=${SYS_CC} CXX=${SYS_CXX} python setup.py bdist_wheel
     require_success "Pywikibot build failed"
-    $PYTHON_EXE ../mpl_delocate.py dist/*.whl
-    require_success "Wheel delocation failed"
-    delocate-addplat --rm-orig -x 10_9 -x 10_10 dist/*.whl
     pip install dist/*.whl
     cd ..
 }
