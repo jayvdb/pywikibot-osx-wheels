@@ -30,7 +30,7 @@ install:
 - cd pywikibot-core
 - echo '[directories]' >> setup.cfg
 - echo "basedirlist = $BUILD_PREFIX, /usr" >> setup.cfg
-- CC=${SYS_CC} CXX=${SYS_CXX} python setup.py bdist_wheel
+- CC=${SYS_CC} CXX=${SYS_CXX} python setup.py install
 - pip install dist/*.whl
 
 script:
