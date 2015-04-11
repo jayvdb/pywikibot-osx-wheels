@@ -1,0 +1,6 @@
+[submodule "terryfy"]
+	path = terryfy
+	url = git://github.com/MacPython/terryfy.git
+[submodule "pywikibot-core"]
+	path = pywikibot-core
+	url = git://github.com/wikimedia/pywikibot-core.git
