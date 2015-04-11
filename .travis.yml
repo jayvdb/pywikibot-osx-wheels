@@ -22,18 +22,17 @@ install:
 - ulimit -n 4096
 - source run_install.sh
 - get_python_environment macpython $VERSION venv
-- pip install -f $NIPY_WHEELHOUSE numpy==$NUMPY_VERSION
-- pip install delocate
-- if [ -n "$MPL_COMMIT" ]; then
-      checkout_commit matplotlib $MPL_COMMIT;
-  fi
-- source pwb_install.sh
-- pwb_build_install
+- check_var $BUILD_PREFIX
+- check_var $SYS_CC
+- check_var $SYS_CXX
+- check_var $PYTHON_EXE
+- ls
+- cd pywikibot-core
+- echo '[directories]' >> setup.cfg
+- echo "basedirlist = $BUILD_PREFIX, /usr" >> setup.cfg
+- CC=${SYS_CC} CXX=${SYS_CXX} python setup.py bdist_wheel
+- pip install dist/*.whl
 
 script:
 # Fix numpy ast errors in tests by upgrading numpy
-- if [ -n "$(pyver_ge $VERSION 3.4.0)" ]; then
-  pip install --upgrade numpy;
-  fi
-- mpl_test
-
+- $PYTHON_EXE setup.py test
