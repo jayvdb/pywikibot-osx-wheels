@@ -2,19 +2,10 @@ language:
 - objective-c
 
 env:
-  global:
-    - MPL_COMMIT=latest-tag
-    - FT_VERSION=2.5.3
-    - PNG_VERSION=1.6.12
-    - ZLIB_VERSION=1.2.8
-    - TCL_URL=http://downloads.activestate.com/ActiveTcl/releases
-    # Need to check these last two from time to time
-    - TCL_VERSION=8.5.17.0
-    - TCL_DMG=ActiveTcl8.5.17.0.298612-macosx10.5-i386-x86_64-threaded.dmg
   matrix:
-  - VERSION=2.7.9 NUMPY_VERSION=1.6.1
-  - VERSION=3.3.5 NUMPY_VERSION=1.7.1
-  - VERSION=3.4.2 NUMPY_VERSION=1.7.1
+  - VERSION=2.7.9
+  - VERSION=3.3.5
+  - VERSION=3.4.2
 
 install:
 # increase number of open files allowed for tests
@@ -45,6 +36,8 @@ install:
     echo "usernames['commons']['commons'] = '$PYWIKIBOT2_USERNAME'" >> ~/.pywikibot/user-config.py ;
     echo "('$PYWIKIBOT2_USERNAME', '$USER_PASSWORD')" > ~/.pywikibot/passwordfile ;
   fi
+- cat ~/.pywikibot/user-config.py
+- cat ~/.pywikibot/passwordfile
 - CC=${SYS_CC} CXX=${SYS_CXX} python setup.py install
 
 script:
