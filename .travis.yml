@@ -55,9 +55,8 @@ install:
     echo "usernames['commons']['commons'] = '$PYWIKIBOT2_USERNAME'" >> ~/.pywikibot/user-config.py ;
     echo "('$PYWIKIBOT2_USERNAME', '$USER_PASSWORD')" > ~/.pywikibot/passwordfile ;
   fi
-- cat ~/.pywikibot/user-config.py
-- cat ~/.pywikibot/passwordfile
 - CC=${SYS_CC} CXX=${SYS_CXX} python setup.py install
+- find scripts
 
 script:
 # Fix numpy ast errors in tests by upgrading numpy
