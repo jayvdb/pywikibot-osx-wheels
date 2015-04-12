@@ -18,6 +18,8 @@ install:
 - check_var $SYS_CXX
 - check_var $PYTHON_EXE
 - cd pywikibot-core
+- git submodule init
+- git submodule update
 - echo '[directories]' >> setup.cfg
 - echo "basedirlist = $BUILD_PREFIX, /usr" >> setup.cfg
 
