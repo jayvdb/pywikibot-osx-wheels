@@ -42,10 +42,10 @@ install:
 - echo "console_encoding = 'utf8'" >> ~/.pywikibot/user-config.py
 
 - if [[ "$GITHUB_USER" == "wikimedia" ]]; then
-  PYWIKIBOT2_USERNAME="Pywikibot-test" ;
-else
-  export PYWIKIBOT2_TEST_WRITE_FAIL=1 ;
-fi
+    PYWIKIBOT2_USERNAME="Pywikibot-test" ;
+  else
+    export PYWIKIBOT2_TEST_WRITE_FAIL=1 ;
+  fi
 
 - if [[ -n "$USER_PASSWORD" && -n "$PYWIKIBOT2_USERNAME" ]]; then
     echo "usernames['$FAMILY']['$LANGUAGE'] = '$PYWIKIBOT2_USERNAME'" >> ~/.pywikibot/user-config.py ;
