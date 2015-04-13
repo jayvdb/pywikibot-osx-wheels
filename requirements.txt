@@ -1,0 +1,64 @@
+# This is a PIP requirements file
+#
+# All dependencies can be installed using:
+# $ sudo pip install -r requirements.txt
+#
+# It is organised so that simple requirements
+# are processed first, and more difficult packages
+# are last.
+# All dependencies other than  httplib2 are optional.
+#
+# It is good practise to install packages using the system
+# package manager if it has a packaged version.  If you are
+# unsure, please use pip as described at the top of the file.
+#
+# To get a list of potential matches, use
+#
+# $ awk -F '[#>=]' '{print $1}' requirements.txt | xargs yum search
+#     or
+# $ awk -F '[#>=]' '{print $1}' requirements.txt | xargs apt-cache search
+
+# mandatory; see README.conversion.txt
+httplib2>=0.9.0
+
+# core option 'daemonize':
+daemonize
+
+# core interwiki_graph.py:
+pydot
+
+# core pagegenerators
+pYsearch
+google
+
+# scripts/script_wui.py:
+crontab
+
+# scipts/replicate_wiki.py
+argparse
+
+# scripts/flickrripper.py
+# On Python 2, flickrapi 1.4.x or 2.x may be used.  Only 2.x works on Python 3.
+# The following automatically selects 2.x on all Python versions, which depends
+# on requests 2.x, which may cause pip to report an error like the following:
+#   pkg_resources.VersionConflict: (requests 1.2.3 (/usr/lib/python2.7/site-packages), Requirement.parse('requests>=2.2.1'))
+# If you see that on Python 2, change this to flickrapi==1.4.5
+# On Python 3, force pip to install requests 2.2.1, or remove flickrapi below.
+Pillow
+flickrapi
+
+# incomplete core component botirc
+irc
+
+# textlib.py
+mwparserfromhell>=0.3.3
+
+# The mysql generator in pagegenerators depends on either oursql or MySQLdb
+# pywikibot prefers oursql
+oursql
+
+# scripts/script_wui.py depends on Lua, which is not available using pip
+# but can be obtained from: https://github.com/bastibe/lunatic-python
+
+# core HTML comparison parser in diff module
+beautifulsoup4
